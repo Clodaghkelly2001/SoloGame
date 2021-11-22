@@ -483,7 +483,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'The Controls are: A and D to Move
 
-    W to Jump'
+    Space to Jump'
 --- !u!222 &427505269
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.766068
+  orthographic size: 8.605254
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -582,7 +582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.95, y: 3.1623187, z: -11}
+  m_LocalPosition: {x: 5.96, y: 3.04, z: -11}
   m_LocalScale: {x: 1.0679613, y: 1.2837074, z: 1}
   m_Children: []
   m_Father: {fileID: 53997660}
@@ -659,8 +659,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175566211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.99, y: 3.15, z: 0}
-  m_LocalScale: {x: 25, y: 10, z: 1}
+  m_LocalPosition: {x: 5.74, y: 2.96, z: 0}
+  m_LocalScale: {x: 25.52, y: 12.546999, z: 1}
   m_Children: []
   m_Father: {fileID: 53997660}
   m_RootOrder: 0
