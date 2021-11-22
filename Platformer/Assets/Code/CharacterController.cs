@@ -14,9 +14,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private LayerMask jumpGround;
     public int points = 0;
 
-    public GameObject CoinsPrefab;
-    public Rigidbody2D SpikePrefab;
-    public Rigidbody2D ChestPrefab;
 
     private float dirX =0f;
     [SerializeField] private float speed = 7f;
@@ -24,6 +21,8 @@ public class CharacterController : MonoBehaviour
 
     private enum movement { idle, run, jump };
     public int LivesLeft = 5;
+
+    [SerializeField] private AudioSource coinsSoundEffect;
 
 
     void Start()
@@ -84,33 +83,45 @@ public class CharacterController : MonoBehaviour
         return Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, .1f, jumpGround);
     }
 
-    public void OnGUI()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        GUI.Box(new Rect(10, 10, 100, 50), " Points " + points + "\nLives: " + LivesLeft);
-    }
-
-    public void Collision(Collision2D collision)
-    {
-        if (collision.gameObject.name == "SpikePrefab")
-        {
-            if (LivesLeft >0)
-            {
-                LivesLeft -= 1;
-                points -= 10;
-                Destroy(gameObject);
-                SceneManager.LoadScene(scene.name);
-            }
-            if (LivesLeft == 0)
-            {
-                Destroy(gameObject);
-                points -= 10;
-                SceneManager.LoadScene("Gameover");
-            }
-        }
-        if (collision.gameObject.name == "CoinsPrefab")
+        if (collision.gameObject.CompareTag("Coins"))
         {
             points += 50;
-            Destroy(gameObject);
+            coinsSoundEffect.Play();
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("trap"))
+        {
+            LivesLeft -= 1;
+            Destroy(gameObject);
+
+            if (LivesLeft > 0)
+            {
+                SceneManager.LoadScene(scene.name);
+            }
+
+            if (LivesLeft == 0)
+            {
+                SceneManager.LoadScene("GAMEOVER");
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Chest"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        else
+        {
+            animator.SetBool("chest", false);
+        }
+    }
+
+    public void OnGUI()
+    {
+        GUI.Box(new Rect(20, 20, 150, 75), " Points " + points + "\nLives: " + LivesLeft); ;
     }
 }

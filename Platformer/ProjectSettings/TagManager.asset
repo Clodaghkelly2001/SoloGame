@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coins
+  - Spike
+  - trap
+  - Chest
   layers:
   - Default
   - TransparentFX
